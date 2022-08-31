@@ -1,0 +1,5 @@
+<h2>$ {{product.price | currency: 'MXN'}}</h2>
+<p>{{product.title | reverse}} </p>
+
+<app-img [img]="product.image"></app-img>
+<button (click)="OnAddToCar()">Add to car</button>

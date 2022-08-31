@@ -1,0 +1,17 @@
+<p>
+    {{'A E I O U' | lowercase | changeVocalsToNumbers}} {{myShoppingCar.length}}
+</p>
+
+
+<!-- <p>{{today | date: 'yyyy/dd/mm'  }}</p>
+<p>{{today | timeAgo}}</p>
+<p>{{date | date: 'short'}}</p>
+<p>${{total}}</p>
+<p>{{'ASDKNFaslkndfoisdii' | lowercase}}</p> -->
+
+
+
+<div class="products--grid">
+    <app-product [product]="Product" *ngFor="let Product of products" (addedProduct)="onAddToShoppingCar($event)"></app-product>
+</div>
+
