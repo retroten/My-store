@@ -9,18 +9,23 @@
 <p>${{total}}</p>
 <p>{{'ASDKNFaslkndfoisdii' | lowercase}}</p> -->
 
-<button (click)="toggleProductDetail()">click</button>
+<button (click)="createNewProduct()">Create new product</button>
 
 <div class="products--grid">
     <app-product
      [product]="Product"
       *ngFor="let Product of products" 
-      (addedProduct)="onAddToShoppingCar($event)" (showProduct)="onShowDetail($event)"></app-product>
+      (addedProduct)="onAddToShoppingCar($event)" 
+      (showProduct)="onShowDetail($event)">
+    </app-product>
+    <button (click)="loadMoreProducts()">Load More</button>
 </div>
 
 <div class="product-detail" [class.active]="showProductDetail">
     <div *ngIf="productChosen">
         <button (click)="toggleProductDetail()">Close</button>
+         <button (click)="updateProduct()">Editar</button>
+         <button (click)="deleteProduct()">Delete</button>
         <h2>{{productChosen.title}}</h2>
         <swiper
         [slidesPerView]="1"
@@ -30,5 +35,6 @@
             </ng-template>
         </swiper>
         <p>{{productChosen.description}}</p>
+       
     </div>
     </div>

@@ -36,4 +36,5 @@ export class ProductComponent implements OnInit {
   onShowDetail(){
     this.showProduct.emit(this.product.id);
   }
+
 }
