@@ -8,20 +8,38 @@ import { Product } from 'src/app/models/product.model';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  products: Product[] = [];
   myShoppingCar: Product[] = [];
   total = 0;
   today = new Date();
   date = new Date(2022, 1, 2);
-  constructor(
+  showProductDetail =false;
+  productChosen: Product= {
+    id: '',
+    title: '',
+    price:0,
+    images: [],
+    description: '',
+    category:{
+      id: '',
+      name: '',
+      typeImg: ''
+    }
+   }
+
+    constructor(
     private StoreService : StoreService,
     private ProductService: ProductsService
   ) { 
     this.myShoppingCar = this.StoreService.getShoppingCar();
   }
-  products: Product[] = [];
+ 
   ngOnInit(): void {
     
-    this.ProductService.getAllProducts().subscribe((data)=>{this.products = data})
+    this.ProductService.getAllProducts()
+      .subscribe(data => { 
+        this.products = data;
+      });
   }
 
   onAddToShoppingCar(Product: Product){
@@ -29,4 +47,18 @@ export class ProductsComponent implements OnInit {
    this.total =this.StoreService.getTotal();
 
   }
+  toggleProductDetail(){
+    this.showProductDetail = !this.showProductDetail;
+  
+  }
+onShowDetail(id:string){
+  this.ProductService.getProduct(id)
+    .subscribe(
+      data =>{
+        this.toggleProductDetail();
+        this.productChosen = data;
+        }
+    )
+}
+
 }

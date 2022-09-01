@@ -1,5 +1,8 @@
 <h2>$ {{product.price | currency: 'MXN'}}</h2>
 <p>{{product.title | reverse}} </p>
 
-<app-img [img]="product.image"></app-img>
-<button (click)="OnAddToCar()">Add to car</button>
+<app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+<button (click)="OnAddToCar()">Add to car</button> 
+
+<button (click)="onShowDetail()">Ver detalles</button> 
+

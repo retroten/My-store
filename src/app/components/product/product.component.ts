@@ -1,6 +1,6 @@
 import { outputAst } from '@angular/compiler';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {Product, rating} from 'src/app/models/product.model'
+import {Product} from 'src/app/models/product.model'
 
 @Component({
   selector: 'app-product',
@@ -8,24 +8,21 @@ import {Product, rating} from 'src/app/models/product.model'
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  @Input() R: rating = {
-    rate:0,
-    count: 0
-  }
    @Input() product: Product = {
     id: '',
     title: '',
     price:0,
-    image: '',
+    images: [],
     description: '',
-    category:'',  
-    rating: this.R
+    category:{
+      id: '',
+      name: '',
+      typeImg: ''
+    }
    }
 
- 
-
    @Output() addedProduct = new EventEmitter<Product>();
-  
+  @Output() showProduct = new EventEmitter<string>();
    constructor() { }
 
   
@@ -35,5 +32,8 @@ export class ProductComponent implements OnInit {
 
   OnAddToCar(){
     this.addedProduct.emit(this.product)
+  }
+  onShowDetail(){
+    this.showProduct.emit(this.product.id);
   }
 }

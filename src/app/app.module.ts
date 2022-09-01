@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { ChangeVocalsToNumbersPipe } from './pipes/change-vocals-to-numbers.pipe';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ChangeVocalsToNumbersPipe } from './pipes/change-vocals-to-numbers.pipe
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
